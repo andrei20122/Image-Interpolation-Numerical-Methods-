@@ -1,0 +1,49 @@
+Leahu Morie Robert Andrei - 311CB
+
+Checkerele pentru fiecare '%' se afla in folderul respectiv
+
+% nearest-neighbour
+|
+|_(1) nn_2x2 - Aplica interpolare nearest-neighbour pe imaginea 2x2 alb-negru
+|  |_(2) nn_2x2_RGB - Aplica interpolare nn pe imaginea 2x2 color
+|  
+|_(3) nn_resize - Mareste imaginea (m, n) -> (p, q) prin nn
+   |_(4) nn_resize_RGB - Mareste imaginea (m, n) -> (p, q) prin nn color
+
+% bilinear
+|
+|_(5) bilinear_coef - Calculeaza coeficientii de interpolare biliniara
+|  |_(6) bilinear_2x2 - Aplica interpolare biliniara alb-negru
+|  |                   - Calculez valoarea pixelului 
+|  |                    - Am folosit variabila "q" deoarece,am vrut sa mai restrang din formula
+|  |                   - chiar daca nu schimba lucrurile 
+|  |_(7) bilinear_2x2_RGB - Aplica interpolare biliniara color
+|  |
+|_(*) surrounding_points - afla punctele ce inconjoara punctul dat
+   |_(8) bilinear_resize - Mareste imaginea prin interpolare biliniar alb-negru
+   |  |_(9) bilinear_resize_RGB - Mareste imaginea prin interpolare biliniar color
+   |
+   |_(10) bilinear_rotate - Roteste imaginea alb-negru cu un unghi dat
+       |_(11) bilinear_rotate_RGB - Roteste imaginea color cu un unghi dat
+
+% bicubic
+|
+|_(12) fx - Aproximeaza derivata fata de x a lui f in punctul dat
+|  |
+|_(13) fy - Aproximeaza derivata fata de y a lui f in punctul dat
+|  |
+|_(14) fxy - Aproximeaza derivata fata de x si y a lui f in punctul dat
+   |_(15) precalc_d - Prealculeaza matricile Ix, Iy si Ixy cu derivatele
+
+
+(1) nn_2x2 - parcurg cu 2 FOR-uri matricea si verific la ce sfert a ajuns
+(2) nn_2x2_RGB - cu ajutorul functiei (1) prelucrez culorile si le adaug
+(4) nn_resize_RGB - cu ajutorul functiei (1) prelucrez culorile si le adaug
+(15) precalc_d - punem in FOR-uri de la 2 la (n-1) respectiv (m-1) deoarece, ar iesi din matrice
+(*) surrounding_points - am pus steluta deoarece, este aceeasi functie in ambele
+
+P.S.1: Am sarit peste unor explicari deoarece era tot explicat in comm + PDF
+P.S.2: Desenul de mai sus explica dependenta unor functii de altele
+P.S.3: Am folosit (floor(x) + 1) in loc de (ceil(x)) deoarece, imi dadaea eroare
+P.S.4: Am observat ca functiile RGB sunt cam aceleasi
+P.S.5:Nu am mai apucat sa termin bicubic deoarece , nu am inteles unele lucruri
